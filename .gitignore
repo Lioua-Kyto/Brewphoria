@@ -1,0 +1,52 @@
+# BrewPhoria root .gitignore — defense-in-depth on top of backend/.gitignore and
+# mobile/.gitignore. Keeps credentials and heavy design exports out of the repo.
+
+# Design export assets (Claude Design HTML/CSS/image export — reference material,
+# not part of the shipped app; ~28MB, kept out of git to keep clones small)
+/BrewPhoria Mobile Redesign/
+
+# Internal / local-only docs — kept on disk, not in the public repo.
+/RECOMMENDATIONS.md
+/CONTEXT.md
+/DEMO_MODE.md
+
+# Local tooling config
+**/.github/copilot-instructions.md
+
+# Stray artifacts
+/package-lock.json
+**/shot.png
+
+# Claude Code local tooling/session config (launch.json, skills) — machine-local,
+# not part of the app. No leading slash so it's caught at any depth (root and
+# mobile/.claude/ both).
+.claude/
+
+# Environment / secrets (defense in depth — also covered per-package)
+.env
+.env.local
+.env.*.local
+*.pem
+*.p12
+*.key
+*.jks
+*.keystore
+key.properties
+
+# Service-account / admin credentials — must never be committed
+**/private_key.json
+**/serviceAccount*.json
+**/firebase-adminsdk*.json
+
+# Native Firebase config (contains per-platform client keys) — regenerate locally
+# via `flutterfire configure` / the Firebase console rather than committing.
+# Flutter's own generated `firebase_options.dart` IS safe to commit (Firebase's own
+# guidance) and is intentionally NOT excluded here.
+**/GoogleService-Info.plist
+**/google-services.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

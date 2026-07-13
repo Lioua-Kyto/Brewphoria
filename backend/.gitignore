@@ -1,3 +1,43 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+
+# Environment
 .env
-node_modules
-dist
+.env.local
+.env.production
+
+# Credentials — must never be committed
+private_key.json
+serviceAccount*.json
+firebase-adminsdk*.json
+GoogleService-Info.plist
+*.pem
+*.p12
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Prisma
+prisma/dev.db
+prisma/*.db-journal
+
+# Test
+coverage/
+.nyc_output/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

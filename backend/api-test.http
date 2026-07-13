@@ -1,40 +1,152 @@
-### List tasks
-GET http://localhost:3000/tasks HTTP/1.1
+### BrewPhoria API Test File
+### Base URL
+@baseUrl = http://localhost:3000/api/v1
+@authToken = Bearer YOUR_FIREBASE_ID_TOKEN_HERE
 
-### Filter tasks by name
-GET http://localhost:3000/tasks?name=project HTTP/1.1
+### ── Health ─────────────────────────────────────────────────────────────────
 
-### Filter tasks by due date range
-GET http://localhost:3000/tasks?dueDateFrom=2025-11-01T00:00:00Z&dueDateTo=2025-12-31T23:59:59Z HTTP/1.1
+GET http://localhost:3000/health
 
-### Filter tasks by name and due date
-GET http://localhost:3000/tasks?name=setup&dueDateFrom=2025-11-01T00:00:00Z&dueDateTo=2025-12-31T23:59:59Z HTTP/1.1
+### ── Auth ───────────────────────────────────────────────────────────────────
 
-
-### Get task by ID
-GET http://localhost:3000/tasks/69173d2072c6c9ea34d55873 HTTP/1.1
-
-### Create a new task
-POST http://localhost:3000/tasks HTTP/1.1
+# Login
+POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "name": "Write API tests",
-  "description": "Create comprehensive tests for all endpoints",
-  "dueDate": "2025-12-15T23:59:59Z",
-  "completed": false
+  "idToken": "your-firebase-id-token"
 }
 
-### Update a task
-PUT http://localhost:3000/tasks/69173d2072c6c9ea34d55873 HTTP/1.1
+###
+
+# Update FCM Token
+PATCH {{baseUrl}}/auth/fcm-token
 Content-Type: application/json
+Authorization: {{authToken}}
 
 {
-  "name": "Complete project setup",
-  "description": "MongoDB and Task model completed successfully",
-  "dueDate": "2025-11-30T23:59:59Z",
-  "completed": true
+  "fcmToken": "your-fcm-device-token"
 }
 
-### Delete a task
-DELETE http://localhost:3000/tasks/69173d2072c6c9ea34d55873 HTTP/1.1
+### ── Categories ──────────────────────────────────────────────────────────────
+
+GET {{baseUrl}}/categories
+
+### ── Products ───────────────────────────────────────────────────────────────
+
+# List products
+GET {{baseUrl}}/products
+
+###
+
+# List with filters
+GET {{baseUrl}}/products?search=espresso&limit=10&page=1
+
+###
+
+# Get product by slug
+GET {{baseUrl}}/products/ethiopia-yirgacheffe
+
+###
+
+# Get product reviews
+GET {{baseUrl}}/products/clxxxxxxxxxxxxxxxxxxxxxxxx/reviews
+
+### ── Cart ────────────────────────────────────────────────────────────────────
+
+# Get cart
+GET {{baseUrl}}/cart
+Authorization: {{authToken}}
+
+###
+
+# Add item
+POST {{baseUrl}}/cart/items
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "productId": "clxxxxxxxxxxxxxxxxxxxxxxxx",
+  "quantity": 2
+}
+
+###
+
+# Update item quantity
+PATCH {{baseUrl}}/cart/items/clxxxxxxxxxxxxxxxxxxxxxxxx
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "quantity": 3
+}
+
+###
+
+# Clear cart
+DELETE {{baseUrl}}/cart
+Authorization: {{authToken}}
+
+### ── Orders ──────────────────────────────────────────────────────────────────
+
+# Checkout
+POST {{baseUrl}}/orders/checkout
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "addressId": "clxxxxxxxxxxxxxxxxxxxxxxxx",
+  "pointsToRedeem": 0,
+  "notes": "Please leave at door"
+}
+
+###
+
+# Get orders
+GET {{baseUrl}}/orders
+Authorization: {{authToken}}
+
+### ── Loyalty ──────────────────────────────────────────────────────────────────
+
+GET {{baseUrl}}/loyalty
+Authorization: {{authToken}}
+
+###
+
+POST {{baseUrl}}/loyalty/redeem
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "pointsToRedeem": 500
+}
+
+### ── Chat ────────────────────────────────────────────────────────────────────
+
+POST {{baseUrl}}/chat/message
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "message": "What are your best single-origin coffees?"
+}
+
+### ── Admin ───────────────────────────────────────────────────────────────────
+
+GET {{baseUrl}}/admin/dashboard
+Authorization: {{authToken}}
+
+###
+
+GET {{baseUrl}}/admin/orders?status=PENDING&page=1&limit=20
+Authorization: {{authToken}}
+
+###
+
+PATCH {{baseUrl}}/admin/orders/clxxxxxxxxxxxxxxxxxxxxxxxx/status
+Content-Type: application/json
+Authorization: {{authToken}}
+
+{
+  "status": "CONFIRMED"
+}

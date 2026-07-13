@@ -1,26 +1,62 @@
-name: BrewPhoria-Backend
-
+name: brewphoria_backend
 services:
-  mongodb:
-    image: mongo:7.0
-    container_name: MongoDB
+  postgres:
+    image: postgres:16-alpine
+    container_name: brewphoria_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: brewphoria
+      POSTGRES_PASSWORD: brewphoria_secret
+      POSTGRES_DB: brewphoria
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U brewphoria"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: brewphoria_redis
     restart: unless-stopped
     ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: BrewPhoria
+      - "6379:6379"
     volumes:
-      - mongodb_data:/data/db
-      - mongodb_config:/data/configdb
-    networks:
-      - rest_api_network
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brewphoria_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://brewphoria:brewphoria_secret@postgres:5432/brewphoria
+      REDIS_URL: redis://redis:6379
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - ./uploads:/app/uploads
 
 volumes:
-  mongodb_data:
-  mongodb_config:
-
-networks:
-  rest_api_network:
-    driver: bridge
+  postgres_data:
+  redis_data:

@@ -1,39 +1,54 @@
 import { prisma } from "../config/database";
-import { Prisma, CartItem } from "@prisma/client";
+import { Cart, CartItem } from "@prisma/client";
 
-const cartInclude = {
-  items: {
-    include: {
-      product: {
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          description: true,
-          price: true,
-          images: true,
-          stock: true,
-          isActive: true,
-          isFeatured: true,
-          avgRating: true,
-          reviewCount: true,
-          categoryId: true,
-          category: { select: { id: true, name: true, slug: true } },
-        },
-      },
-    },
-    orderBy: { addedAt: "asc" },
-  },
-} satisfies Prisma.CartInclude;
-
-export type CartWithItems = Prisma.CartGetPayload<{ include: typeof cartInclude }>;
-export type CartLine = CartWithItems["items"][number];
+export type CartWithItems = Cart & {
+  items: (CartItem & {
+    product: {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+      price: import("@prisma/client").Prisma.Decimal;
+      images: string[];
+      stock: number;
+      isActive: boolean;
+      isFeatured: boolean;
+      avgRating: import("@prisma/client").Prisma.Decimal;
+      reviewCount: number;
+      categoryId: string;
+      category: { id: string; name: string; slug: string } | null;
+    };
+  })[];
+};
 
 export class CartRepository {
   async findByUserId(userId: string): Promise<CartWithItems | null> {
     return prisma.cart.findUnique({
       where: { userId },
-      include: cartInclude,
+      include: {
+        items: {
+          include: {
+            product: {
+              select: {
+                id: true,
+                name: true,
+                slug: true,
+                description: true,
+                price: true,
+                images: true,
+                stock: true,
+                isActive: true,
+                isFeatured: true,
+                avgRating: true,
+                reviewCount: true,
+                categoryId: true,
+                category: { select: { id: true, name: true, slug: true } },
+              },
+            },
+          },
+          orderBy: { addedAt: "asc" },
+        },
+      },
     });
   }
 
@@ -49,8 +64,8 @@ export class CartRepository {
     cartId: string,
     productId: string,
     quantity: number,
-    unitPrice: number,
-    modifiers: Prisma.InputJsonValue,
+    unitPrice: number | import("@prisma/client").Prisma.Decimal,
+    modifiers: import("@prisma/client").Prisma.InputJsonValue = [],
   ): Promise<CartItem> {
     return prisma.cartItem.create({
       data: { cartId, productId, quantity, unitPrice, modifiers },
@@ -75,7 +90,9 @@ export class CartRepository {
     await prisma.cartItem.deleteMany({ where: { cartId } });
   }
 
-  async findItemById(itemId: string): Promise<CartItem | null> {
-    return prisma.cartItem.findUnique({ where: { id: itemId } });
+  async findItem(cartId: string, productId: string): Promise<CartItem | null> {
+    return prisma.cartItem.findFirst({
+      where: { cartId, productId },
+    });
   }
 }

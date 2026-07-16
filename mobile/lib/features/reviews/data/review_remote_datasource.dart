@@ -1,35 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
-import 'package:coffee_card/features/reviews/domain/review_model.dart';
-
-/// Exact rating aggregates for a product, computed server-side across all
-/// visible reviews (not just the loaded page).
-class ReviewSummary {
-  const ReviewSummary({
-    required this.average,
-    required this.count,
-    required this.distribution,
-  });
-
-  final double average;
-  final int count;
-
-  /// Star (1–5) → number of reviews at that rating.
-  final Map<int, int> distribution;
-
-  factory ReviewSummary.fromJson(Map<String, dynamic> json) {
-    final dist = (json['distribution'] as Map<String, dynamic>?) ?? const {};
-    return ReviewSummary(
-      average: (json['average'] as num?)?.toDouble() ?? 0,
-      count: (json['count'] as num?)?.toInt() ?? 0,
-      distribution: {
-        for (var star = 1; star <= 5; star++)
-          star: (dist['$star'] as num?)?.toInt() ?? 0,
-      },
-    );
-  }
-}
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
+import 'package:brewphoria/features/reviews/domain/review_model.dart';
 
 class ReviewRemoteDatasource {
   final Dio _dio = DioClient.instance.dio;
@@ -75,18 +47,6 @@ class ReviewRemoteDatasource {
   Future<void> deleteReview(String id) async {
     try {
       await _dio.delete<void>(ApiEndpoints.reviewById(id));
-    } catch (e) {
-      throw mapDioException(e);
-    }
-  }
-
-  Future<ReviewSummary> getProductReviewSummary(String productId) async {
-    try {
-      final response = await _dio.get<Map<String, dynamic>>(
-        ApiEndpoints.productReviewSummary(productId),
-      );
-      return ReviewSummary.fromJson(
-          response.data!['data'] as Map<String, dynamic>);
     } catch (e) {
       throw mapDioException(e);
     }

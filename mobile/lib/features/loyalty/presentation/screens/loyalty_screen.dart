@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/widgets/app_error_widget.dart';
-import 'package:coffee_card/core/widgets/entrance.dart';
-import 'package:coffee_card/core/widgets/coffee_cup.dart';
-import 'package:coffee_card/core/widgets/brew_snack.dart';
-import 'package:coffee_card/features/cart/presentation/providers/cart_provider.dart';
-import 'package:coffee_card/core/widgets/product_cutout.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
-import 'package:coffee_card/core/router/app_router.dart';
-import 'package:coffee_card/core/utils/extensions.dart';
-import 'package:coffee_card/features/loyalty/presentation/providers/loyalty_provider.dart';
-import 'package:coffee_card/features/loyalty/domain/loyalty_model.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/widgets/app_error_widget.dart';
+import 'package:brewphoria/core/widgets/entrance.dart';
+import 'package:brewphoria/core/widgets/coffee_cup.dart';
+import 'package:brewphoria/core/widgets/brew_snack.dart';
+import 'package:brewphoria/features/cart/presentation/providers/cart_provider.dart';
+import 'package:brewphoria/core/widgets/product_cutout.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
+import 'package:brewphoria/core/router/app_router.dart';
+import 'package:brewphoria/core/utils/extensions.dart';
+import 'package:brewphoria/features/loyalty/presentation/providers/loyalty_provider.dart';
+import 'package:brewphoria/features/loyalty/domain/loyalty_model.dart';
 
 const _tiers = ['BRONZE', 'SILVER', 'GOLD', 'PLATINUM'];
 
@@ -327,7 +327,7 @@ class _RewardsRow extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return SizedBox(
-      height: 210,
+      height: 196,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 22),
@@ -336,77 +336,100 @@ class _RewardsRow extends ConsumerWidget {
         itemBuilder: (context, i) {
           final r = _rewards[i];
           final unlocked = currentPoints >= r.cost;
-          return Container(
+          // Same signature "floating card" pattern as the Shop grid: the photo
+          // escapes the card's top edge instead of sitting inside its padding.
+          return SizedBox(
             width: 158,
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: isDark ? AppColors.surfaceGlowDark : AppColors.surface,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: isDark ? null : AppColors.cardShadow,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Stack(
+              clipBehavior: Clip.none,
               children: [
-                SizedBox(
-                  height: 74,
+                Padding(
+                  padding: const EdgeInsets.only(top: 38),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(16, 54, 16, 16),
+                    decoration: BoxDecoration(
+                      color: isDark
+                          ? AppColors.surfaceGlowDark
+                          : AppColors.surface,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: isDark ? null : AppColors.cardShadow,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                            '\$${(r.cost / 100).toStringAsFixed(0)} ${r.label}',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.fraunces(
+                                fontSize: 15, fontWeight: FontWeight.w600)),
+                        const SizedBox(height: 3),
+                        Text('${r.cost} pts',
+                            style: AppTextStyles.bodySmall
+                                .copyWith(color: AppColors.textSecondary)),
+                        const SizedBox(height: 10),
+                        if (unlocked)
+                          Pressable(
+                            onTap: () => _confirmRedeem(context, ref, r.cost),
+                            child: Container(
+                              width: double.infinity,
+                              height: 36,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                color: isDark
+                                    ? AppColors.primaryDark
+                                    : AppColors.primary,
+                                borderRadius: BorderRadius.circular(11),
+                              ),
+                              child: Text('Redeem',
+                                  style: GoogleFonts.hankenGrotesk(
+                                      fontSize: 12.5,
+                                      fontWeight: FontWeight.w700,
+                                      color: isDark
+                                          ? AppColors.onPrimaryDark
+                                          : AppColors.onPrimary)),
+                            ),
+                          )
+                        else
+                          Container(
+                            width: double.infinity,
+                            height: 36,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(11),
+                              border: Border.all(
+                                  color: isDark
+                                      ? AppColors.outlineDark
+                                      : AppColors.outline),
+                            ),
+                            child: Text('${r.cost - currentPoints} pts away',
+                                style: GoogleFonts.hankenGrotesk(
+                                    fontSize: 12.5,
+                                    fontWeight: FontWeight.w700,
+                                    color: AppColors.textSecondary)),
+                          ),
+                      ],
+                    ),
+                  ),
+                ),
+                // ── Free-floating cutout (escapes the card top) ──
+                Positioned(
+                  top: 0,
+                  left: 0,
+                  right: 0,
                   child: Center(
                     child: Opacity(
                       opacity: unlocked ? 1 : 0.55,
                       child: SizedBox(
-                        height: 84,
-                        child: ProductCutout(url: 'assets/img/${r.img}', decodeWidth: 200),
+                        height: 92,
+                        width: 118,
+                        child: ProductCutout(
+                            url: 'assets/img/${r.img}', decodeWidth: 240),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 8),
-                Text('\$${(r.cost / 100).toStringAsFixed(0)} ${r.label}',
-                    style: GoogleFonts.fraunces(
-                        fontSize: 15, fontWeight: FontWeight.w600)),
-                const SizedBox(height: 2),
-                Text('${r.cost} pts',
-                    style: AppTextStyles.bodySmall
-                        .copyWith(color: AppColors.textSecondary)),
-                const SizedBox(height: 10),
-                if (unlocked)
-                  Pressable(
-                    onTap: () => _confirmRedeem(context, ref, r.cost),
-                    child: Container(
-                      width: double.infinity,
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color:
-                            isDark ? AppColors.primaryDark : AppColors.primary,
-                        borderRadius: BorderRadius.circular(11),
-                      ),
-                      child: Text('Redeem',
-                          style: GoogleFonts.hankenGrotesk(
-                              fontSize: 12.5,
-                              fontWeight: FontWeight.w700,
-                              color: isDark
-                                  ? AppColors.onPrimaryDark
-                                  : AppColors.onPrimary)),
-                    ),
-                  )
-                else
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(11),
-                      border: Border.all(
-                          color: isDark
-                              ? AppColors.outlineDark
-                              : AppColors.outline),
-                    ),
-                    child: Text('${r.cost - currentPoints} pts away',
-                        style: GoogleFonts.hankenGrotesk(
-                            fontSize: 12.5,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.textSecondary)),
-                  ),
               ],
             ),
           );

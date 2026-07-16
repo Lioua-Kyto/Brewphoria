@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/widgets/product_cutout.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/widgets/product_cutout.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
 
 /// Signature Pattern 3.1 — the floating product card. The product photo lifts
 /// out of a warm cream "photo well" that escapes the card's top edge with its
@@ -31,7 +31,7 @@ class FloatingProductCard extends StatelessWidget {
   final VoidCallback? onAdd;
   final GlobalKey? imageKey;
 
-  static const double _imageHeight = 116;
+  static const double _imageHeight = 122;
   static const double _cardTop = 48;
 
   @override
@@ -48,7 +48,7 @@ class FloatingProductCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: _cardTop),
             child: Container(
-              padding: const EdgeInsets.fromLTRB(14, 74, 14, 14),
+              padding: const EdgeInsets.fromLTRB(14, 62, 14, 14),
               decoration: BoxDecoration(
                 color: isDark ? AppColors.surfaceGlowDark : AppColors.surface,
                 borderRadius: BorderRadius.circular(AppSpacing.radiusCard),
@@ -89,7 +89,7 @@ class FloatingProductCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 9),
+                  const SizedBox(height: 6),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

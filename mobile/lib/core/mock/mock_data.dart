@@ -496,6 +496,41 @@ final Map<String, List<Map<String, dynamic>>> mockReviews = {
   ],
 };
 
+// Generic pool for products without a hand-written review set, so the reviews
+// screen is never empty. Selection is seeded by slug so a product's reviews are
+// stable across reloads.
+const List<(int, String)> _genericReviewPool = [
+  (5, 'Exactly as described and arrived quickly. Already planning my next order.'),
+  (5, 'Really impressed — the quality is a clear step above what I expected.'),
+  (4, 'Very good overall. One or two small tweaks and it would be perfect.'),
+  (5, 'Slotted straight into my daily routine. Can’t fault it.'),
+  (5, 'You can tell real care went into this one. Highly recommend.'),
+  (4, 'Dependable and exactly what I hoped for. Happy customer.'),
+  (5, 'Genuinely great — the BrewPhoria standard really shows here.'),
+  (4, 'Enjoyed it a lot and would gladly buy again.'),
+];
+
+const List<String> _genericReviewers = [
+  'Alex M.', 'Jordan P.', 'Sam W.', 'Riley T.',
+  'Casey L.', 'Morgan D.', 'Taylor R.', 'Jamie K.',
+];
+
+/// Curated reviews when they exist, otherwise a deterministic generated set
+/// sized to the product's [reviewCount] (capped) so no product reads as empty.
+List<Map<String, dynamic>> reviewsForSlug(String slug, int reviewCount) {
+  final curated = mockReviews[slug];
+  if (curated != null && curated.isNotEmpty) return curated;
+  final n = reviewCount.clamp(0, 6);
+  if (n == 0) return const [];
+  final seed = slug.hashCode.abs();
+  return List.generate(n, (i) {
+    final (rating, comment) =
+        _genericReviewPool[(seed + i) % _genericReviewPool.length];
+    return _rev('rg_${slug}_$i', rating, comment,
+        _genericReviewers[(seed + i * 3) % _genericReviewers.length], 2 + i * 5);
+  });
+}
+
 // ── Saved addresses ──────────────────────────────────────────────────────────
 final List<Map<String, dynamic>> mockAddresses = [
   {

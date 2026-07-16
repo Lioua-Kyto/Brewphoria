@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/widgets/address_autocomplete_field.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/utils/extensions.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
-import 'package:coffee_card/features/cart/presentation/providers/cart_provider.dart';
-import 'package:coffee_card/features/checkout/presentation/providers/checkout_provider.dart';
-import 'package:coffee_card/features/loyalty/presentation/providers/loyalty_provider.dart';
-import 'package:coffee_card/features/profile/presentation/providers/profile_provider.dart';
-import 'package:coffee_card/features/orders/domain/order_history_model.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/widgets/address_autocomplete_field.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/utils/extensions.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
+import 'package:brewphoria/features/cart/presentation/providers/cart_provider.dart';
+import 'package:brewphoria/features/checkout/presentation/providers/checkout_provider.dart';
+import 'package:brewphoria/features/loyalty/presentation/providers/loyalty_provider.dart';
+import 'package:brewphoria/features/profile/presentation/providers/profile_provider.dart';
+import 'package:brewphoria/features/orders/domain/order_history_model.dart';
 
 const double _freeDeliveryThreshold = 50.0;
 const double _deliveryFee = 5.99;
@@ -157,7 +157,7 @@ class _CheckoutScreenState extends ConsumerState<CheckoutScreen> {
                 ],
               ),
               loyaltyAsync.when(
-                data: (loyalty) => loyalty.currentPoints > 0
+                data: (loyalty) => loyalty.currentPoints >= 100
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -458,6 +458,7 @@ class _RedeemSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final maxRedeemable = (currentPoints ~/ 100) * 100;
     return Container(
       padding: const EdgeInsets.fromLTRB(16, 14, 16, 8),
       decoration: BoxDecoration(
@@ -494,11 +495,13 @@ class _RedeemSlider extends StatelessWidget {
                   isDark ? AppColors.backgroundDark : AppColors.surfaceVariant,
               trackHeight: 5,
             ),
+            // Points redeem in 100-pt steps, so the cap is the largest
+            // multiple of 100 that fits the balance (865 pts → 800 redeemable).
             child: Slider(
-              value: pointsToRedeem.toDouble(),
+              value: pointsToRedeem.toDouble().clamp(0, maxRedeemable.toDouble()),
               min: 0,
-              max: currentPoints.toDouble(),
-              divisions: currentPoints >= 100 ? currentPoints ~/ 100 : 1,
+              max: maxRedeemable.toDouble(),
+              divisions: maxRedeemable ~/ 100,
               label: '$pointsToRedeem pts',
               onChanged: (v) => onChanged((v / 100).round() * 100),
             ),

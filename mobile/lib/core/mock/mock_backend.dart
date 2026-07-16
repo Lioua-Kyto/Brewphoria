@@ -1,4 +1,4 @@
-import 'package:coffee_card/core/mock/mock_data.dart';
+import 'package:brewphoria/core/mock/mock_data.dart';
 
 /// A tiny in-memory backend for offline demo mode. Holds mutable state (cart,
 /// orders, wishlist, loyalty, addresses) and answers requests with the same
@@ -123,7 +123,8 @@ class MockBackend {
     if (segs.length >= 3 && segs[2] == 'reviews') {
       final p = _byId(segs[1]);
       final slug = p?['slug'] as String? ?? '';
-      final reviews = mockReviews[slug] ?? const [];
+      final reviews =
+          reviewsForSlug(slug, (p?['reviewCount'] as int?) ?? 0);
       if (segs.length == 4 && segs[3] == 'summary') {
         return (200, _ok(_reviewSummary(p, reviews)));
       }

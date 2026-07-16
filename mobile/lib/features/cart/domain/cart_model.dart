@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:coffee_card/features/cart/domain/cart_item_model.dart';
+import 'package:brewphoria/features/cart/domain/cart_item_model.dart';
 
 part 'cart_model.freezed.dart';
 part 'cart_model.g.dart';

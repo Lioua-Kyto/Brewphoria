@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:coffee_card/features/shop/domain/modifier_model.dart';
+import 'package:brewphoria/features/shop/domain/modifier_model.dart';
 
 part 'chat_message_model.freezed.dart';
 part 'chat_message_model.g.dart';

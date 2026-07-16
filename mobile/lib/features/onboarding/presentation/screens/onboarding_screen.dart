@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/core/widgets/product_cutout.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/core/widgets/product_cutout.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});

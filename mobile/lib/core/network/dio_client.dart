@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:coffee_card/core/config/app_config.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/network/mock_interceptor.dart';
+import 'package:brewphoria/core/config/app_config.dart';
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/network/mock_interceptor.dart';
 
 class DioClient {
   DioClient._() {

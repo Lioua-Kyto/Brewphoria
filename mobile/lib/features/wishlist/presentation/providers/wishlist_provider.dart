@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
-import 'package:coffee_card/features/wishlist/data/wishlist_remote_datasource.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
+import 'package:brewphoria/features/wishlist/data/wishlist_remote_datasource.dart';
 
 part 'wishlist_provider.g.dart';
 

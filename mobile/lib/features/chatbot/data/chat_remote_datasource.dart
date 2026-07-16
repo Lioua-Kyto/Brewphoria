@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
-import 'package:coffee_card/features/chatbot/domain/chat_message_model.dart';
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
+import 'package:brewphoria/features/chatbot/domain/chat_message_model.dart';
 
 class ChatRemoteDatasource {
   final Dio _dio = DioClient.instance.dio;

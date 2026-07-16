@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart';
-import 'package:coffee_card/core/config/app_config.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/mock/mock_data.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/features/auth/data/auth_remote_datasource.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
+import 'package:brewphoria/core/config/app_config.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/mock/mock_data.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/features/auth/data/auth_remote_datasource.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
 
 class AuthRepository {
   AuthRepository(this._datasource);

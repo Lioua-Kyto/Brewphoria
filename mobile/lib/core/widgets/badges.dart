@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
 
 class OrderStatusBadge extends StatelessWidget {
   const OrderStatusBadge({required this.status, super.key});

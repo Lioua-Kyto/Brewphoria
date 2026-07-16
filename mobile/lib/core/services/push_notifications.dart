@@ -2,10 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:coffee_card/firebase_options.dart';
-import 'package:coffee_card/core/router/app_router.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/firebase_options.dart';
+import 'package:brewphoria/core/router/app_router.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
 
 /// Attached to [MaterialApp] so the service can surface foreground messages
 /// without needing a screen's BuildContext.

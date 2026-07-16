@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/widgets/app_error_widget.dart';
-import 'package:coffee_card/core/widgets/app_network_image.dart';
-import 'package:coffee_card/core/widgets/badges.dart';
-import 'package:coffee_card/core/utils/extensions.dart';
-import 'package:coffee_card/features/orders/presentation/providers/orders_provider.dart';
-import 'package:coffee_card/features/checkout/domain/order_model.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/widgets/app_error_widget.dart';
+import 'package:brewphoria/core/widgets/app_network_image.dart';
+import 'package:brewphoria/core/widgets/badges.dart';
+import 'package:brewphoria/core/utils/extensions.dart';
+import 'package:brewphoria/features/orders/presentation/providers/orders_provider.dart';
+import 'package:brewphoria/features/checkout/domain/order_model.dart';
 
 class OrderDetailScreen extends ConsumerWidget {
   const OrderDetailScreen({required this.orderId, super.key});

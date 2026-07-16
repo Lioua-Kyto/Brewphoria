@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/orders/data/orders_remote_datasource.dart';
-import 'package:coffee_card/features/checkout/domain/order_model.dart';
+import 'package:brewphoria/features/orders/data/orders_remote_datasource.dart';
+import 'package:brewphoria/features/checkout/domain/order_model.dart';
 
 part 'orders_provider.g.dart';
 

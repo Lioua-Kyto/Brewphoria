@@ -3,15 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:coffee_card/core/config/app_config.dart';
-import 'package:coffee_card/core/router/app_router.dart';
-import 'package:coffee_card/core/services/push_notifications.dart';
-import 'package:coffee_card/core/theme/app_theme.dart';
-import 'package:coffee_card/core/theme/theme_mode_provider.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/core/widgets/brand_splash.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
-import 'package:coffee_card/firebase_options.dart';
+import 'package:brewphoria/core/config/app_config.dart';
+import 'package:brewphoria/core/router/app_router.dart';
+import 'package:brewphoria/core/services/push_notifications.dart';
+import 'package:brewphoria/core/theme/app_theme.dart';
+import 'package:brewphoria/core/theme/theme_mode_provider.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/core/widgets/brand_splash.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

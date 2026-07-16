@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
 
 class ShimmerWidget extends StatelessWidget {
   const ShimmerWidget({

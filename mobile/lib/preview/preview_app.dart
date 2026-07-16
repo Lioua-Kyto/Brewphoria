@@ -5,42 +5,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'dart:async';
-import 'package:coffee_card/core/theme/app_theme.dart';
-import 'package:coffee_card/core/widgets/glass_tab_bar.dart';
-import 'package:coffee_card/core/widgets/floating_product_card.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
-import 'package:coffee_card/features/shop/domain/category_model.dart';
-import 'package:coffee_card/features/shop/domain/modifier_model.dart';
-import 'package:coffee_card/features/wishlist/presentation/providers/wishlist_provider.dart';
-import 'package:coffee_card/features/shop/data/product_remote_datasource.dart';
-import 'package:coffee_card/features/shop/presentation/providers/products_provider.dart';
-import 'package:coffee_card/features/shop/presentation/providers/product_detail_provider.dart';
-import 'package:coffee_card/features/reviews/data/review_remote_datasource.dart';
-import 'package:coffee_card/features/shop/presentation/screens/shop_screen.dart';
-import 'package:coffee_card/features/shop/presentation/screens/product_detail_screen.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
-import 'package:coffee_card/features/cart/domain/cart_model.dart';
-import 'package:coffee_card/features/cart/domain/cart_item_model.dart';
-import 'package:coffee_card/features/cart/presentation/providers/cart_provider.dart';
-import 'package:coffee_card/features/cart/presentation/screens/cart_screen.dart';
-import 'package:coffee_card/features/loyalty/domain/loyalty_model.dart';
-import 'package:coffee_card/features/loyalty/presentation/providers/loyalty_provider.dart';
-import 'package:coffee_card/features/profile/domain/profile_model.dart';
-import 'package:coffee_card/features/profile/presentation/providers/profile_provider.dart';
-import 'package:coffee_card/features/profile/presentation/screens/profile_screen.dart';
-import 'package:coffee_card/features/loyalty/data/loyalty_remote_datasource.dart';
-import 'package:coffee_card/features/loyalty/presentation/screens/loyalty_screen.dart';
-import 'package:coffee_card/features/chatbot/presentation/screens/chatbot_screen.dart';
-import 'package:coffee_card/features/checkout/presentation/screens/checkout_screen.dart';
-import 'package:coffee_card/features/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:coffee_card/features/auth/presentation/screens/login_screen.dart';
-import 'package:coffee_card/features/reviews/presentation/screens/reviews_screen.dart';
-import 'package:coffee_card/features/reviews/domain/review_model.dart';
-import 'package:coffee_card/features/checkout/domain/order_model.dart';
-import 'package:coffee_card/features/orders/data/orders_remote_datasource.dart';
-import 'package:coffee_card/features/orders/presentation/providers/orders_provider.dart';
-import 'package:coffee_card/features/orders/presentation/screens/orders_screen.dart';
+import 'package:brewphoria/core/theme/app_theme.dart';
+import 'package:brewphoria/core/widgets/glass_tab_bar.dart';
+import 'package:brewphoria/core/widgets/floating_product_card.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
+import 'package:brewphoria/features/shop/domain/category_model.dart';
+import 'package:brewphoria/features/shop/domain/modifier_model.dart';
+import 'package:brewphoria/features/wishlist/presentation/providers/wishlist_provider.dart';
+import 'package:brewphoria/features/shop/data/product_remote_datasource.dart';
+import 'package:brewphoria/features/shop/presentation/providers/products_provider.dart';
+import 'package:brewphoria/features/shop/presentation/providers/product_detail_provider.dart';
+import 'package:brewphoria/features/shop/presentation/screens/shop_screen.dart';
+import 'package:brewphoria/features/shop/presentation/screens/product_detail_screen.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/features/cart/domain/cart_model.dart';
+import 'package:brewphoria/features/cart/domain/cart_item_model.dart';
+import 'package:brewphoria/features/cart/presentation/providers/cart_provider.dart';
+import 'package:brewphoria/features/cart/presentation/screens/cart_screen.dart';
+import 'package:brewphoria/features/loyalty/domain/loyalty_model.dart';
+import 'package:brewphoria/features/loyalty/presentation/providers/loyalty_provider.dart';
+import 'package:brewphoria/features/profile/domain/profile_model.dart';
+import 'package:brewphoria/features/profile/presentation/providers/profile_provider.dart';
+import 'package:brewphoria/features/profile/presentation/screens/profile_screen.dart';
+import 'package:brewphoria/features/loyalty/data/loyalty_remote_datasource.dart';
+import 'package:brewphoria/features/loyalty/presentation/screens/loyalty_screen.dart';
+import 'package:brewphoria/features/chatbot/presentation/screens/chatbot_screen.dart';
+import 'package:brewphoria/features/checkout/presentation/screens/checkout_screen.dart';
+import 'package:brewphoria/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:brewphoria/features/auth/presentation/screens/login_screen.dart';
+import 'package:brewphoria/features/reviews/presentation/screens/reviews_screen.dart';
+import 'package:brewphoria/features/reviews/domain/review_model.dart';
+import 'package:brewphoria/features/checkout/domain/order_model.dart';
+import 'package:brewphoria/features/orders/data/orders_remote_datasource.dart';
+import 'package:brewphoria/features/orders/presentation/providers/orders_provider.dart';
+import 'package:brewphoria/features/orders/presentation/screens/orders_screen.dart';
 
 // ── Sample data ──────────────────────────────────────────────────────────────
 const _espresso = CategoryModel(
@@ -55,8 +54,12 @@ const _merch = CategoryModel(id: 'c6', name: 'Merchandise', slug: 'merch');
 
 final _sampleCategories = [_espresso, _cold, _pastry, _beans, _tea, _merch];
 
-ProductModel _p(String id, String name, double price, String img, CategoryModel cat,
-        {bool featured = false, String desc = '', double rating = 4.7, int reviews = 42}) =>
+ProductModel _p(
+        String id, String name, double price, String img, CategoryModel cat,
+        {bool featured = false,
+        String desc = '',
+        double rating = 4.7,
+        int reviews = 42}) =>
     ProductModel(
       id: id,
       name: name,
@@ -128,8 +131,8 @@ final _sampleGroups = <ModifierGroupModel>[
   ),
 ];
 
-final _macchiato = _p('macchiato', 'Caramel Macchiato', 5.40, 'macchiato.png',
-        _espresso,
+final _macchiato = _p(
+        'macchiato', 'Caramel Macchiato', 5.40, 'macchiato.png', _espresso,
         rating: 4.9,
         reviews: 128,
         desc:
@@ -173,7 +176,8 @@ class _PreviewAuthNotifier extends AuthNotifier {
 final _sampleCartItems = [
   CartItemModel(id: 'ci1', quantity: 1, product: _macchiato),
   CartItemModel(id: 'ci2', quantity: 2, product: _sampleProducts[2]), // nitro
-  CartItemModel(id: 'ci3', quantity: 1, product: _sampleProducts[4]), // cinnamon
+  CartItemModel(
+      id: 'ci3', quantity: 1, product: _sampleProducts[4]), // cinnamon
 ];
 
 class _PreviewWishlist extends WishlistNotifier {
@@ -298,8 +302,12 @@ final _sampleOrders = OrdersListResult(
           _oi('Iced Vanilla Latte', 'iced-latte.png', 4.80, 1),
         ],
         DateTime(2026, 7, 4)),
-    _order('esp78901', 'DELIVERED', 3.10,
-        [_oi('Double Espresso', 'espresso.png', 3.10, 1)], DateTime(2026, 7, 2)),
+    _order(
+        'esp78901',
+        'DELIVERED',
+        3.10,
+        [_oi('Double Espresso', 'espresso.png', 3.10, 1)],
+        DateTime(2026, 7, 2)),
   ],
   total: 4,
   totalPages: 1,
@@ -379,7 +387,8 @@ void main() {
               page: 1,
             )),
         paginatedProductsProvider.overrideWith(_PreviewPaginatedProducts.new),
-        productDetailProvider('macchiato').overrideWith((ref) async => _macchiato),
+        productDetailProvider('macchiato')
+            .overrideWith((ref) async => _macchiato),
         authNotifierProvider.overrideWith(_PreviewAuthNotifier.new),
         cartNotifierProvider.overrideWith(_PreviewCartNotifier.new),
         loyaltyAccountProvider.overrideWith((ref) async => _sampleLoyalty),
@@ -422,8 +431,7 @@ class _EntranceDemoState extends State<_EntranceDemo> {
       pageBuilder: (_, __, ___) => const ProductDetailScreen(slug: 'macchiato'),
       transitionsBuilder: (context, animation, secondary, child) =>
           FadeTransition(
-        opacity:
-            CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+        opacity: CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
         child: child,
       ),
     ));
@@ -487,7 +495,6 @@ class _PreviewRoot extends StatefulWidget {
 }
 
 class _PreviewRootState extends State<_PreviewRoot> {
-
   Widget _shell(Widget screen, int index) => Scaffold(
         extendBody: true,
         body: Stack(
@@ -514,10 +521,9 @@ class _PreviewRootState extends State<_PreviewRoot> {
       themeMode: ThemeMode.system, // driven by browser prefers-color-scheme
       home: switch (_screen) {
         _Screen.entranceDemo => const _EntranceDemo(),
-        _Screen.productDetail =>
-          const ProductDetailScreen(slug: 'macchiato'),
+        _Screen.productDetail => const ProductDetailScreen(slug: 'macchiato'),
         _Screen.cart => _shell(const CartScreen(), 1),
-        _Screen.checkout => const CheckoutScreen(tipAmount: 2.81),
+        _Screen.checkout => const CheckoutScreen(),
         _Screen.orders => _shell(const OrdersScreen(), 2),
         _Screen.loyalty => _shell(const LoyaltyScreen(), 3),
         _Screen.profile => _shell(const ProfileScreen(), 4),

@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
-import 'package:coffee_card/features/cart/data/cart_remote_datasource.dart';
-import 'package:coffee_card/features/cart/data/cart_repository.dart';
-import 'package:coffee_card/features/cart/domain/cart_model.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/features/cart/data/cart_remote_datasource.dart';
+import 'package:brewphoria/features/cart/data/cart_repository.dart';
+import 'package:brewphoria/features/cart/domain/cart_model.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
 
 part 'cart_provider.g.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
 
 /// Central app theme built from the design tokens in [AppColors] /
 /// [AppTextStyles]. Fraunces display · Hanken Grotesk UI.

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
 
 /// One address suggestion from the backend Places proxy.
 class PlaceSuggestion {

@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/widgets/fly_to_cart.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/widgets/fly_to_cart.dart';
 
 /// Pattern 3.2 — floating frosted-glass pill nav with a sliding ink-pill
 /// active indicator (Tab A, locked). Sits inset from the screen edges and

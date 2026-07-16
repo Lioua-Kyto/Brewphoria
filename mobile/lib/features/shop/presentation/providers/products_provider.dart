@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/shop/data/product_remote_datasource.dart';
-import 'package:coffee_card/features/shop/data/product_repository.dart';
-import 'package:coffee_card/features/shop/domain/category_model.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
+import 'package:brewphoria/features/shop/data/product_remote_datasource.dart';
+import 'package:brewphoria/features/shop/data/product_repository.dart';
+import 'package:brewphoria/features/shop/domain/category_model.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
 
 part 'products_provider.g.dart';
 

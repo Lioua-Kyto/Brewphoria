@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/network/places_datasource.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/network/places_datasource.dart';
 
 /// A street field with Google Places autocomplete via the backend proxy. On
 /// selecting a suggestion it resolves the full address and hands the structured

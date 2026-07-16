@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/constants/app_spacing.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/widgets/app_error_widget.dart';
-import 'package:coffee_card/core/widgets/app_network_image.dart';
-import 'package:coffee_card/core/widgets/entrance.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
-import 'package:coffee_card/core/utils/extensions.dart';
-import 'package:coffee_card/features/shop/presentation/providers/product_detail_provider.dart';
-import 'package:coffee_card/features/reviews/data/review_remote_datasource.dart';
-import 'package:coffee_card/features/reviews/domain/review_model.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_spacing.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/widgets/app_error_widget.dart';
+import 'package:brewphoria/core/widgets/app_network_image.dart';
+import 'package:brewphoria/core/widgets/entrance.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
+import 'package:brewphoria/core/utils/extensions.dart';
+import 'package:brewphoria/features/shop/presentation/providers/product_detail_provider.dart';
+import 'package:brewphoria/features/reviews/domain/review_model.dart';
 
 enum _Filter { all, withPhotos, fiveStars }
 

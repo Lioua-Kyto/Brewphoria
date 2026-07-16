@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/constants/app_text_styles.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/core/widgets/product_cutout.dart';
-import 'package:coffee_card/core/widgets/pressable.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
-import 'package:coffee_card/features/auth/presentation/providers/guest_provider.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/constants/app_text_styles.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/core/widgets/product_cutout.dart';
+import 'package:brewphoria/core/widgets/pressable.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/features/auth/presentation/providers/guest_provider.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/profile/data/profile_remote_datasource.dart';
-import 'package:coffee_card/features/profile/domain/profile_model.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
+import 'package:brewphoria/features/profile/data/profile_remote_datasource.dart';
+import 'package:brewphoria/features/profile/domain/profile_model.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
 
 part 'profile_provider.g.dart';
 

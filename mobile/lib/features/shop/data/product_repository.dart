@@ -1,6 +1,6 @@
-import 'package:coffee_card/features/shop/data/product_remote_datasource.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
-import 'package:coffee_card/features/shop/domain/category_model.dart';
+import 'package:brewphoria/features/shop/data/product_remote_datasource.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
+import 'package:brewphoria/features/shop/domain/category_model.dart';
 
 class ProductRepository {
   ProductRepository(this._datasource);

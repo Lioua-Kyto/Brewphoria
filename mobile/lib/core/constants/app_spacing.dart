@@ -22,6 +22,9 @@ abstract final class AppSpacing {
   static const double navBarPillHeight = 64.0;
   static const double glassBlur = 18.0;
 
+  // Bottom clearance for the floating glass nav bar
+  static const double glassNavClearance = 110.0;
+
   // Icon sizes
   static const double iconSm = 16.0;
   static const double iconMd = 24.0;

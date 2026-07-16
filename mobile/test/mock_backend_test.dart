@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:coffee_card/core/mock/mock_backend.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
-import 'package:coffee_card/features/shop/domain/category_model.dart';
-import 'package:coffee_card/features/reviews/domain/review_model.dart';
-import 'package:coffee_card/features/cart/domain/cart_model.dart';
-import 'package:coffee_card/features/checkout/domain/order_model.dart';
-import 'package:coffee_card/features/loyalty/domain/loyalty_model.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
+import 'package:brewphoria/core/mock/mock_backend.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
+import 'package:brewphoria/features/shop/domain/category_model.dart';
+import 'package:brewphoria/features/reviews/domain/review_model.dart';
+import 'package:brewphoria/features/cart/domain/cart_model.dart';
+import 'package:brewphoria/features/checkout/domain/order_model.dart';
+import 'package:brewphoria/features/loyalty/domain/loyalty_model.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
 
 /// Validates that the offline mock backend produces JSON that the real domain
 /// models can actually parse — the whole point of the Dio-interceptor approach.

@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:coffee_card/features/shop/domain/modifier_model.dart';
+import 'package:brewphoria/features/shop/domain/modifier_model.dart';
 
 part 'order_model.freezed.dart';
 part 'order_model.g.dart';

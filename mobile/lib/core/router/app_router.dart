@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/core/router/route_names.dart';
-import 'package:coffee_card/features/auth/presentation/screens/login_screen.dart';
-import 'package:coffee_card/features/auth/presentation/providers/auth_provider.dart';
-import 'package:coffee_card/features/shop/presentation/screens/shop_screen.dart';
-import 'package:coffee_card/features/shop/presentation/screens/product_detail_screen.dart';
-import 'package:coffee_card/features/cart/presentation/screens/cart_screen.dart';
-import 'package:coffee_card/features/cart/presentation/providers/cart_provider.dart';
-import 'package:coffee_card/features/checkout/presentation/screens/checkout_screen.dart';
-import 'package:coffee_card/features/checkout/presentation/screens/order_success_screen.dart';
-import 'package:coffee_card/features/orders/presentation/screens/orders_screen.dart';
-import 'package:coffee_card/features/orders/presentation/screens/order_detail_screen.dart';
-import 'package:coffee_card/features/loyalty/presentation/screens/loyalty_screen.dart';
-import 'package:coffee_card/features/notifications/presentation/screens/notifications_screen.dart';
-import 'package:coffee_card/features/profile/presentation/screens/profile_screen.dart';
-import 'package:coffee_card/features/chatbot/presentation/screens/chatbot_screen.dart';
-import 'package:coffee_card/features/reviews/presentation/screens/write_review_screen.dart';
-import 'package:coffee_card/features/reviews/presentation/screens/reviews_screen.dart';
-import 'package:coffee_card/features/onboarding/presentation/screens/onboarding_screen.dart';
-import 'package:coffee_card/features/auth/presentation/providers/guest_provider.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/core/widgets/glass_tab_bar.dart';
+import 'package:brewphoria/core/router/route_names.dart';
+import 'package:brewphoria/features/auth/presentation/screens/login_screen.dart';
+import 'package:brewphoria/features/auth/presentation/providers/auth_provider.dart';
+import 'package:brewphoria/features/shop/presentation/screens/shop_screen.dart';
+import 'package:brewphoria/features/shop/presentation/screens/product_detail_screen.dart';
+import 'package:brewphoria/features/cart/presentation/screens/cart_screen.dart';
+import 'package:brewphoria/features/cart/presentation/providers/cart_provider.dart';
+import 'package:brewphoria/features/checkout/presentation/screens/checkout_screen.dart';
+import 'package:brewphoria/features/checkout/presentation/screens/order_success_screen.dart';
+import 'package:brewphoria/features/orders/presentation/screens/orders_screen.dart';
+import 'package:brewphoria/features/orders/presentation/screens/order_detail_screen.dart';
+import 'package:brewphoria/features/loyalty/presentation/screens/loyalty_screen.dart';
+import 'package:brewphoria/features/notifications/presentation/screens/notifications_screen.dart';
+import 'package:brewphoria/features/profile/presentation/screens/profile_screen.dart';
+import 'package:brewphoria/features/chatbot/presentation/screens/chatbot_screen.dart';
+import 'package:brewphoria/features/reviews/presentation/screens/write_review_screen.dart';
+import 'package:brewphoria/features/reviews/presentation/screens/reviews_screen.dart';
+import 'package:brewphoria/features/onboarding/presentation/screens/onboarding_screen.dart';
+import 'package:brewphoria/features/auth/presentation/providers/guest_provider.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/core/widgets/glass_tab_bar.dart';
 
 part 'app_router.g.dart';
 
@@ -165,8 +165,7 @@ GoRouter appRouter(Ref ref) {
         name: RouteNames.checkout,
         parentNavigatorKey: _rootNavigatorKey,
         pageBuilder: (context, state) {
-          final tip = state.extra is double ? state.extra as double : 0.0;
-          return MaterialPage(child: CheckoutScreen(tipAmount: tip));
+          return const MaterialPage(child: CheckoutScreen());
         },
       ),
       GoRoute(

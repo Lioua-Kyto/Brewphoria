@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:coffee_card/features/checkout/domain/order_model.dart';
+import 'package:brewphoria/features/checkout/domain/order_model.dart';
 
-export 'package:coffee_card/features/checkout/domain/order_model.dart';
+export 'package:brewphoria/features/checkout/domain/order_model.dart';
 
 part 'order_history_model.freezed.dart';
 part 'order_history_model.g.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
 
 /// The one kinetic-type moment (design §6): the brand logo scales in, then the
 /// Fraunces "BrewPhoria" wordmark reveals letter-by-letter and an underline

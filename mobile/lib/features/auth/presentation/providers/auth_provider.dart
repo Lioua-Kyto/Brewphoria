@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/auth/data/auth_remote_datasource.dart';
-import 'package:coffee_card/features/auth/data/auth_repository.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
-import 'package:coffee_card/features/auth/presentation/providers/guest_provider.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
+import 'package:brewphoria/features/auth/data/auth_remote_datasource.dart';
+import 'package:brewphoria/features/auth/data/auth_repository.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
+import 'package:brewphoria/features/auth/presentation/providers/guest_provider.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
 
 part 'auth_provider.g.dart';
 

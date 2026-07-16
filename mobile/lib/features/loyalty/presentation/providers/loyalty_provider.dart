@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/loyalty/data/loyalty_remote_datasource.dart';
-import 'package:coffee_card/features/loyalty/domain/loyalty_model.dart';
+import 'package:brewphoria/features/loyalty/data/loyalty_remote_datasource.dart';
+import 'package:brewphoria/features/loyalty/domain/loyalty_model.dart';
 
 part 'loyalty_provider.g.dart';
 

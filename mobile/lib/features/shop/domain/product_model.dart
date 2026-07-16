@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:coffee_card/features/shop/domain/category_model.dart';
-import 'package:coffee_card/features/shop/domain/modifier_model.dart';
+import 'package:brewphoria/features/shop/domain/category_model.dart';
+import 'package:brewphoria/features/shop/domain/modifier_model.dart';
 
 part 'product_model.freezed.dart';
 part 'product_model.g.dart';

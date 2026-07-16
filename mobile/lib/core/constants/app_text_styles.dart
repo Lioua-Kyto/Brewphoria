@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
 
 /// Type scale from `BrewPhoria System.dc.html`:
 /// Fraunces (display / wordmark) · Hanken Grotesk (UI / body).

@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
 
 class WishlistRemoteDatasource {
   final Dio _dio = DioClient.instance.dio;

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/notifications/data/notification_remote_datasource.dart';
-import 'package:coffee_card/features/notifications/domain/notification_model.dart';
+import 'package:brewphoria/features/notifications/data/notification_remote_datasource.dart';
+import 'package:brewphoria/features/notifications/domain/notification_model.dart';
 
 part 'notifications_provider.g.dart';
 

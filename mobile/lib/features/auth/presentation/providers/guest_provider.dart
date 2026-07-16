@@ -1,5 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
 
 part 'guest_provider.g.dart';
 

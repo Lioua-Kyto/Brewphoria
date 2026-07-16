@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/mock/mock_backend.dart';
+import 'package:brewphoria/core/mock/mock_backend.dart';
 
 /// When offline demo mode is on, this is the FIRST Dio interceptor: it answers
 /// every request from [MockBackend] and resolves it locally, so no network call

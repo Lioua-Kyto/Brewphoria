@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:coffee_card/core/constants/app_colors.dart';
+import 'package:brewphoria/core/constants/app_colors.dart';
 
 /// Signature Pattern 3.3 — the takeaway coffee cup (Cup A) whose liquid fills
 /// toward a target fraction with a smooth animation. Reused at three sizes:

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/reviews/data/review_remote_datasource.dart';
-import 'package:coffee_card/features/reviews/domain/review_model.dart';
+import 'package:brewphoria/features/reviews/data/review_remote_datasource.dart';
+import 'package:brewphoria/features/reviews/domain/review_model.dart';
 
 part 'review_provider.g.dart';
 

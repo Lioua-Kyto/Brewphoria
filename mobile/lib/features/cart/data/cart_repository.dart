@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:coffee_card/core/errors/app_exception.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
-import 'package:coffee_card/features/cart/data/cart_remote_datasource.dart';
-import 'package:coffee_card/features/cart/domain/cart_item_model.dart';
-import 'package:coffee_card/features/cart/domain/cart_model.dart';
-import 'package:coffee_card/features/shop/domain/modifier_model.dart';
-import 'package:coffee_card/features/shop/domain/product_model.dart';
+import 'package:brewphoria/core/errors/app_exception.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
+import 'package:brewphoria/features/cart/data/cart_remote_datasource.dart';
+import 'package:brewphoria/features/cart/domain/cart_item_model.dart';
+import 'package:brewphoria/features/cart/domain/cart_model.dart';
+import 'package:brewphoria/features/shop/domain/modifier_model.dart';
+import 'package:brewphoria/features/shop/domain/product_model.dart';
 
 class CartRepository {
   CartRepository(this._datasource);

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:coffee_card/core/constants/api_endpoints.dart';
-import 'package:coffee_card/core/network/dio_client.dart';
-import 'package:coffee_card/features/auth/domain/user_model.dart';
-import 'package:coffee_card/features/profile/domain/profile_model.dart';
+import 'package:brewphoria/core/constants/api_endpoints.dart';
+import 'package:brewphoria/core/network/dio_client.dart';
+import 'package:brewphoria/features/auth/domain/user_model.dart';
+import 'package:brewphoria/features/profile/domain/profile_model.dart';
 
 class ProfileRemoteDatasource {
   final Dio _dio = DioClient.instance.dio;

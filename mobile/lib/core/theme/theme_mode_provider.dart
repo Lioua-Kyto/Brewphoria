@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/core/storage/hive_service.dart';
+import 'package:brewphoria/core/storage/hive_service.dart';
 
 part 'theme_mode_provider.g.dart';
 

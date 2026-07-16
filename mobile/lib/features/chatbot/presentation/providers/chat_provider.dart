@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:coffee_card/features/chatbot/data/chat_remote_datasource.dart';
-import 'package:coffee_card/features/chatbot/domain/chat_message_model.dart';
+import 'package:brewphoria/features/chatbot/data/chat_remote_datasource.dart';
+import 'package:brewphoria/features/chatbot/domain/chat_message_model.dart';
 
 part 'chat_provider.g.dart';
 

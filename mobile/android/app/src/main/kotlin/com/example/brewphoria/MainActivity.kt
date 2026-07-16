@@ -1,4 +1,4 @@
-package com.example.coffee_card
+package com.example.brewphoria
 
 import io.flutter.embedding.android.FlutterActivity
 
